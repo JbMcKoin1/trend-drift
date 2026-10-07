@@ -6,14 +6,14 @@ Placeholders: `<cpanel-user>` is the cPanel username, `<server-host>` is the ser
 
 ## Phase 1: SSH access
 
-- [ ] **Enable SSH:** cPanel → Manage Shell → enable SSH access.
-- [ ] **Create a key locally** (on your machine, not the server):
+- [x] **Enable SSH:** cPanel → Manage Shell → enable SSH access.
+- [x] **Create a key locally** (on your machine, not the server):
   ```sh
   ssh-keygen -t ed25519 -f ~/.ssh/trend_drift -C "trend-drift deploy"
   ```
   Use a passphrase. This creates `~/.ssh/trend_drift` (private, never shared) and `~/.ssh/trend_drift.pub` (public).
-- [ ] **Import and authorize the public key:** cPanel → SSH Access → Manage SSH Keys → Import Key. Paste the contents of `trend_drift.pub`, then click Manage → Authorize.
-- [ ] **Add a host entry** to `~/.ssh/config`:
+- [x] **Import and authorize the public key:** cPanel → SSH Access → Manage SSH Keys → Import Key. Paste the contents of `trend_drift.pub`, then click Manage → Authorize.
+- [x] **Add a host entry** to `~/.ssh/config`:
   ```
   Host trend-drift
       HostName <server-host>
@@ -22,8 +22,18 @@ Placeholders: `<cpanel-user>` is the cPanel username, `<server-host>` is the ser
       IdentityFile ~/.ssh/trend_drift
       IdentitiesOnly yes
   ```
-- [ ] **Test the connection:** `ssh trend-drift`. It should log in without a password prompt (other than the key passphrase).
-- [ ] **Create the staging subdomain:** cPanel → Domains → create `staging.trend-drift.com` and note its document root.
+- [x] **Test the connection:** `ssh trend-drift`. It should log in without a password prompt (other than the key passphrase).
+- [x] **Create the staging subdomain:** cPanel → Domains → create `staging.trend-drift.com` with "Share document root" **unticked** (otherwise staging serves the production folder).
+
+**Gotcha:** the SSH `User` is the **cPanel** username (shown in the cPanel Terminal prompt), not the Namecheap account login. Using the wrong one gives `Permission denied (publickey)` and a fallback password prompt.
+
+Document roots (relative to `/home/<cpanel-user>/`):
+
+| Domain | Document root |
+|--------|---------------|
+| trend-drift.com | `public_html` |
+| staging.trend-drift.com | `staging.trend-drift.com` |
+| wholesomepup.com | `wholesomepup.com` |
 
 ## Phase 2: SSL automation
 
@@ -47,9 +57,9 @@ All commands run on the server over `ssh trend-drift`.
 - [ ] **Issue one cert for all five names, using webroot validation.** Each `-w` sets the webroot for the `-d` names that follow it:
   ```sh
   ~/.acme.sh/acme.sh --issue \
-    -w /home/<cpanel-user>/public_html          -d trend-drift.com -d www.trend-drift.com \
-    -w /home/<cpanel-user>/<staging-docroot>    -d staging.trend-drift.com \
-    -w /home/<cpanel-user>/<wholesomepup-docroot> -d wholesomepup.com -d www.wholesomepup.com
+    -w /home/<cpanel-user>/public_html             -d trend-drift.com -d www.trend-drift.com \
+    -w /home/<cpanel-user>/staging.trend-drift.com -d staging.trend-drift.com \
+    -w /home/<cpanel-user>/wholesomepup.com        -d wholesomepup.com -d www.wholesomepup.com
   ```
   All five names must already resolve to this server, and each webroot must serve `/.well-known/acme-challenge/`.
 - [ ] **Deploy it to cPanel with the `cpanel_uapi` hook:**

@@ -4,7 +4,7 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## Setup
 
-**Next up:** Phase 1 (server access).
+**Next up:** Phase 2 (SSL automation, deadline October 20, 2026).
 
 ### Phase 0: Claude configuration
 - [x] Clone the repo locally
@@ -13,9 +13,9 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Add `.claude/settings.json` deny rules (`.env` files, `~/.ssh/`, `~/finance-data/`)
 
 ### Phase 1: Server access
-- [ ] Confirm SSH access to Namecheap Stellar (port 21098) with key-based auth
-- [ ] Create the staging subdomain and confirm its document root
-- [ ] Confirm the production document root for trend-drift.com
+- [x] Confirm SSH access to Namecheap Stellar (port 21098) with key-based auth
+- [x] Create the staging subdomain and confirm its document root
+- [x] Confirm the production document root for trend-drift.com
 
 ### Phase 2: SSL automation
 - [ ] Confirm acme.sh is issuing and auto-renewing Let's Encrypt certificates for the production and staging domains
