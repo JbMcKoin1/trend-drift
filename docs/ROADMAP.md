@@ -4,6 +4,14 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## Setup
 
+**Next up:** Phase 1 (server access).
+
+### Phase 0: Claude configuration
+- [x] Clone the repo locally
+- [x] Scaffold project docs, `CLAUDE.md`, and `.gitignore`
+- [x] Set up the Claude Project
+- [x] Add `.claude/settings.json` deny rules (`.env` files, `~/.ssh/`, `~/finance-data/`)
+
 ### Phase 1: Server access
 - [ ] Confirm SSH access to Namecheap Stellar (port 21098) with key-based auth
 - [ ] Create the staging subdomain and confirm its document root
