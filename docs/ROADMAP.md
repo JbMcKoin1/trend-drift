@@ -27,12 +27,15 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] Choose a chart library (Chart.js or alternative)
 - [ ] Set up the test runner and `tests/fixtures/`
 
-### Phase 4: Deploy pipeline
+### Phase 4: Repo and docs scaffolding
+- [x] Complete, done as part of Phase 0 (Claude configuration)
+
+### Phase 5: Deploy pipeline
 - [ ] Write a deploy script: build, then sync `dist/` over SSH
 - [ ] Exclude `.well-known/` from every sync and delete step
 - [ ] Deploy to staging, verify, then promote to production
 
-## v1: Personal finance helper
+## Phase 6 — v1: Personal finance helper
 
 Each slice gets a spec in `docs/specs/` before implementation.
 

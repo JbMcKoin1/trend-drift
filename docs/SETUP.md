@@ -78,6 +78,12 @@ All commands run on the server over `ssh trend-drift`.
 - [ ] Choose a chart library (Chart.js or alternative)
 - [ ] Set up the test runner and `tests/fixtures/`
 
+## Phase 4: Repo and docs scaffolding (complete)
+
+Done as part of Claude configuration (Phase 0).
+
+- [x] Repo cloned, project docs, `CLAUDE.md`, `.gitignore`, and `.claude/settings.json` committed
+
 ## Phase 5: Deploy pipeline
 
 - [ ] Write a deploy script: build, then sync `dist/` to the server over `ssh trend-drift`
