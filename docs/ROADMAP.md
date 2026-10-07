@@ -4,7 +4,7 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## Setup
 
-**Next up:** Phase 2 (SSL automation, deadline October 20, 2026).
+**Next up:** Phase 3 (tooling exploration).
 
 ### Phase 0: Claude configuration
 - [x] Clone the repo locally
@@ -18,8 +18,9 @@ Status: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Confirm the production document root for trend-drift.com
 
 ### Phase 2: SSL automation
-- [ ] Confirm acme.sh is issuing and auto-renewing Let's Encrypt certificates for the production and staging domains
-- [ ] Record which paths renewal depends on (`.well-known/`) so deploys never touch them
+- [x] acme.sh issues one Let's Encrypt cert for all five names and installs it via cPanel (details in [SETUP.md](SETUP.md))
+- [x] Record which paths renewal depends on (`.well-known/`) so deploys never touch them
+- [ ] Confirm the first automatic renewal (around December 7, 2026)
 
 ### Phase 3: Tooling exploration
 - [ ] Scaffold Vite + React
