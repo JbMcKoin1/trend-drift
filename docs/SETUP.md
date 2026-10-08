@@ -2,7 +2,7 @@
 
 The remaining setup work, as a checklist. Phase 0 (repo and Claude configuration) is done; see [ROADMAP.md](ROADMAP.md).
 
-Placeholders: `<cpanel-user>` is the cPanel username, `<server-host>` is the server hostname from the Namecheap welcome email, and `<you@example.com>` is the address for notifications. Confirm every document root in cPanel → Domains before using it.
+Placeholders: `<cpanel-user>` is the cPanel username, `<server-host>` is the server hostname from the Namecheap welcome email, and `<your-email>` is the address for notifications (not on trend-drift.com). Confirm every document root in cPanel → Domains before using it.
 
 ## Phase 1: SSH access
 
@@ -105,10 +105,7 @@ All remaining commands run on the server over `ssh trend-drift`. Completed 2026-
 
 ## Phase 3: Tooling exploration
 
-- [ ] Scaffold Vite + React
-- [ ] Prototype Papa Parse on sample (anonymized) bank CSVs
-- [ ] Choose a chart library (Chart.js or alternative)
-- [ ] Set up the test runner and `tests/fixtures/`
+Tracked in [ROADMAP.md](ROADMAP.md#phase-3-tooling-exploration).
 
 ## Phase 4: Repo and docs scaffolding (complete)
 
@@ -118,17 +115,11 @@ Done as part of Claude configuration (Phase 0).
 
 ## Phase 5: Deploy pipeline
 
-- [ ] Write a deploy script: build, then sync `dist/` to the server over `ssh trend-drift`
+- [ ] Write a deploy script: build, then sync `dist/` over `ssh trend-drift` into `public_html/finance/` (production) and the matching folder on staging, never the document root itself
 - [ ] Exclude `.well-known/` from every sync and delete step
 - [ ] Check for server-side `.htaccess` files (HTTPS redirects) in each document root, and make sure deploys preserve them
 - [ ] Deploy to staging, verify, then promote to production
 
 ## Phase 6: v1 build
 
-Build the five v1 slices in [ROADMAP.md](ROADMAP.md), each from a spec in [specs/](specs/):
-
-- [ ] CSV drop and raw view
-- [ ] Column mapping
-- [ ] Categorization
-- [ ] Transfer detection
-- [ ] Monthly dashboard
+Tracked in [ROADMAP.md](ROADMAP.md#phase-6--v1-personal-finance-helper). Each slice is built from a spec in [specs/](specs/).
